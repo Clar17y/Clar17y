@@ -51,5 +51,11 @@ Build a live match-tracking app to log these events in real time during games in
 ## 🔵 Project 3: Football Events Management System (Rovodev-Powered)
 
 Same foundation as Project 2, but now accelerated using [Atlassian Rovodev](https://www.atlassian.com/rovodev) (Claude 4 Sonnet under the hood). Code generation is vastly faster, even though I’m still learning TypeScript and React.
+I've since moved on to Codex CLI tool which is now running ChatGPT 5 Codex model and am very impressed with the ability of it.
 
 This phase is about scaling the application, exploring how far AI-assisted development can take a hobbyist project, and maintaining control over quality and direction as complexity grows.
+Will be looking soon to productionise what I have an get it hosted in AWS!
+
+## 🟠 Project 4: Football Video Analysis
+
+With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events freom the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
