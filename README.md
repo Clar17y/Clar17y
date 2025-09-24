@@ -58,4 +58,4 @@ Will be looking soon to productionise what I have an get it hosted in AWS!
 
 ## 🟠 Project 4: Football Video Analysis
 
-With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events freom the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
+With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events from the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
