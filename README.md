@@ -48,14 +48,19 @@ Build a live match-tracking app to log these events in real time during games in
 
 ---
 
-## 🔵 Project 3: Football Events Management System (Rovodev-Powered)
+## 🔵 Project 3: Football Events Management System
 
 Same foundation as Project 2, but now accelerated using [Atlassian Rovodev](https://www.atlassian.com/rovodev) (Claude 4 Sonnet under the hood). Code generation is vastly faster, even though I’m still learning TypeScript and React.
 I've since moved on to Codex CLI tool which is now running ChatGPT 5 Codex model and am very impressed with the ability of it.
 
 This phase is about scaling the application, exploring how far AI-assisted development can take a hobbyist project, and maintaining control over quality and direction as complexity grows.
+Now includes co-authored commits from Claude using Claude Code on web and Opus 4.5. Using 4.5 Opus as much as possible through Kiro / AntiGravity and Claude Code interface. Codex 5.2 XHigh is also pretty good using Codex CLI!
 Will be looking soon to productionise what I have an get it hosted in AWS!
 
 ## 🟠 Project 4: Football Video Analysis
 
 With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events from the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
+
+## 🟣 Project 5: Inventory Management
+
+Can I help my wife's business SavvyHampers by building a bespoke solution to one of her key problems: Inventory Management. Hampers are a collection of items and ensuring you have the stock required to be able to build a hamper is not as simple as just maintaining a list of products that you are selling. Can we use AI (notably Opus 4.5 at the moment), to build an Inventory Management system that we can host on AWS or even locally to start and track inventory / sales / calculate margins and make data driven insights to drive the business forward? Currently she just uses Google sheets.
