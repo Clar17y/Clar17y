@@ -61,6 +61,8 @@ Will be looking soon to productionise what I have an get it hosted in AWS!
 
 With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events from the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
 
+Update: More time consuming than beneficial... got it working but the amount of time needed to train the model would make this not worth the time. Also, as the camera pans and the players move in and out of the shot it would be very difficult for the model to track each player - how does it know who the player who came into the frame is? How do you attribute stats to them if they're never identified before going out of frame again? etc. Parked this for now.
+
 ## 🟣 Project 5: Savvy Hampers Inventory Manager
 
 Mobile-first inventory, costing, and margin tracking for a hamper / kit business (built for an Etsy seller).
