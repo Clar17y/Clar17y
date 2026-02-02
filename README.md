@@ -61,6 +61,28 @@ Will be looking soon to productionise what I have an get it hosted in AWS!
 
 With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events from the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
 
-## 🟣 Project 5: Inventory Management
+## 🟣 Project 5: Savvy Hampers Inventory Manager
 
-Can I help my wife's business SavvyHampers by building a bespoke solution to one of her key problems: Inventory Management. Hampers are a collection of items and ensuring you have the stock required to be able to build a hamper is not as simple as just maintaining a list of products that you are selling. Can we use AI (notably Opus 4.5 at the moment), to build an Inventory Management system that we can host on AWS or even locally to start and track inventory / sales / calculate margins and make data driven insights to drive the business forward? Currently she just uses Google sheets.
+Mobile-first inventory, costing, and margin tracking for a hamper / kit business (built for an Etsy seller).
+
+### Features
+
+- Lot-based inventory with expiry dates and FIFO allocation
+- Barcode scanning (camera or handheld scanner input) for fast stock entry
+- Hamper definitions with category-based requirements and real-time "can make" availability
+- Sales recording with automatic stock consumption and margin calculation (including Etsy fees)
+- Business expenses tracking (packaging, ads, postage, etc.)
+- Analytics dashboards plus low-stock / expiring alerts
+- Optional Etsy integration to sync listing inventory (real mode or mock mode for dev)
+- Historical import from spreadsheets (sales + expenses)
+
+### Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React + Vite + TypeScript + TailwindCSS |
+| Backend | Express + TypeScript |
+| Database | PostgreSQL |
+| ORM | Prisma |
+| Auth | Supabase (magic links) |
+| Barcode | html5-qrcode |
