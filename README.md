@@ -1,90 +1,191 @@
-- 👋 Hi, I’m @Clar17y
-- 👀 I’m interested in learning how to work with AI tools and expand my coding knowledge
-- 🌱 I’m currently starting with Python and Cursor but will try new things when I can!
+# 👋 Hi, I'm @Clar17y
 
-My first project is creating an application to help my Grassroots football team.
+Technology and engineering leader working in electronic trading, with a particular interest in **AI-assisted software engineering, distributed systems, developer productivity, and building useful products from scratch**.
 
-# ⚽️ Personal Projects - Grassroots Football Tools
+Professionally, I lead engineering teams working across high-throughput trading systems and have increasingly focused on how **agentic AI changes the software development lifecycle**.
 
-## 🟢 Project 1: Pitch Allocation System
+Outside work, I build products to explore that in practice. I use tools including **OpenAI Codex, Claude Code, GitHub Copilot and Devin**, often combining multiple agents for implementation, review, testing and architectural challenge.
 
-A pitch allocation system designed to help grassroots clubs allocate teams to pitches each week — inspired by my son's club where the fixture secretary used pen and paper.
-
-**Development Steps:**
-1. Build a Python application to allocate teams across available pitches.
-2. Add user-defined constraints (e.g. specific teams, pitch availability).
-3. Develop a simple UI in Python.
-4. Convert the application into a mobile-friendly website usable by club members.
+My projects have evolved from small Python experiments into full-stack applications, distributed services and production systems.
 
 ---
 
-## 🟡 Project 2: Football Events Management System (Spreadsheet Edition)
+# 🚆 Parallel
 
-Started as a personal effort to gain insight into my son's team’s performance by tracking match data in a spreadsheet. The goal was to ask AI questions like:
-- Who was the most improved player?
-- What interesting stats can you share about the team?
-- What do the game notes say about our progress?
+**Community-driven commuter intelligence. Think Waze for commuting.**
 
-**Problems Encountered:**
-- Data formatting issues made it hard for AI (ChatGPT) to analyse effectively.
-- I manually restructured the spreadsheet into a clearer format that resembled a relational database.
+Parallel is a pre-launch platform designed to help commuters make better decisions using a combination of real-time transport data and insight from people currently travelling.
 
-**Evolution:**
-- Created a PostgreSQL database mirroring the spreadsheet structure.
-- Focused on a central `Events` table, e.g.:
+Users will be able to:
 
-| match_id | time               | period_number | kind  | team_id | player_id | player_name | performance | goal_for | goal_against | notes                                                        |
-|----------|--------------------|----------------|-------|---------|-----------|--------------|-------------|-----------|---------------|--------------------------------------------------------------|
-| 1        | 15/09/2024 11:07:12 | 1              | goal  | 1       | 8         | Player1      | Solid (+1)  | 1         | 0             | Scored from a corner                                          |
-| 1        | 15/09/2024 11:07:12 | 1              | assist| 1       | 3         | Player2      | Solid (+1)  | 0         | 0             | Scored from a corner                                          |
-| 1        | 15/09/2024 11:07:44 | 1              | goal  | 2       |           |              |             | 0         | 1             | Right winger caused problems and a lucky toe poke goal       |
+* Connect with friends and coordinate journeys
+* See disruption information as it develops
+* Share live observations from trains and stations
+* Compare journey options using real-world network conditions
+* Combine community reports with official transport data
 
-> Design went from allowing multiple players per row (e.g. goal scorer + assister) to two separate rows, hence some duplication
+### Architecture
 
-**Next Idea:**
-Build a live match-tracking app to log these events in real time during games instead of retroactively from video.
+```text
+National Rail Darwin Kafka
+        ↓
+Ingestion Worker
+        ↓
+PostgreSQL + Redis
+        ↓
+Express REST API / SSE
+        ↓
+Next.js PWA
+```
 
-**Shoutout:** [pitchfeed.co.uk](https://www.pitchfeed.co.uk) – they beat me to it and even trialled with our club via my wife. Their app focuses on live updates for families; mine’s focused on personal stats and analysis.
+A separately deployed scheduler manages historical performance synchronisation, disruption polling and lifecycle cleanup using PostgreSQL/Redis leases for single-instance job execution.
+
+### Technology
+
+| Layer                | Technology                                                     |
+| -------------------- | -------------------------------------------------------------- |
+| Runtime              | Node.js 24, TypeScript, npm workspaces                         |
+| Frontend             | Next.js, React, Tailwind CSS                                   |
+| Client Data          | TanStack React Query                                           |
+| PWA                  | Serwist service worker                                         |
+| Maps                 | MapLibre GL, PMTiles                                           |
+| API                  | Express REST services                                          |
+| Realtime             | Server-Sent Events, Redis Pub/Sub                              |
+| Data Ingestion       | KafkaJS, National Rail Darwin                                  |
+| Database             | PostgreSQL / PostGIS on Neon                                   |
+| Data Access          | Drizzle ORM                                                    |
+| Cache & Coordination | Redis on Upstash                                               |
+| Authentication       | Better Auth                                                    |
+| Validation           | Zod                                                            |
+| Monitoring           | Prometheus, Grafana                                            |
+| Hosting              | Vercel, Render                                                 |
+| Testing              | Vitest, React Testing Library, Supertest, Playwright, axe-core |
+| CI / Quality         | GitHub Actions, Oxlint, dependency auditing                    |
+
+The system is tested beyond normal functional coverage, including **load, soak, reconnect-storm, resilience, recovery and database migration drills**.
+
+External integrations include National Rail Rail Data Marketplace, Darwin live data, HSP historical performance, Transport for London and Resend.
+
+Source is currently private while the product remains pre-launch.
 
 ---
 
-## 🔵 Project 3: Football Events Management System
+# 🟣 Savvy Hampers Inventory & Profitability Platform
 
-Same foundation as Project 2, but now accelerated using [Atlassian Rovodev](https://www.atlassian.com/rovodev) (Claude 4 Sonnet under the hood). Code generation is vastly faster, even though I’m still learning TypeScript and React.
-I've since moved on to Codex CLI tool which is now running ChatGPT 5 Codex model and am very impressed with the ability of it.
+A production inventory and profitability application built for a real Etsy-based business and used day-to-day.
 
-This phase is about scaling the application, exploring how far AI-assisted development can take a hobbyist project, and maintaining control over quality and direction as complexity grows.
-Now includes co-authored commits from Claude using Claude Code on web and Opus 4.5. Using 4.5 Opus as much as possible through Kiro / AntiGravity and Claude Code interface. Codex 5.2 XHigh is also pretty good using Codex CLI!
-Will be looking soon to productionise what I have an get it hosted in AWS!
-
-## 🟠 Project 4: Football Video Analysis
-
-With the success I've had using Codex CLI tool, is it possible to create my own software that will take the footage I've captured of the grassroots football team and analyse it with AI? e.g. can I get the events from the 3rd project created automatically by analysing it with software that I train using my data and autopopulate the events.
-
-Update: More time consuming than beneficial... got it working but the amount of time needed to train the model would make this not worth the time. Also, as the camera pans and the players move in and out of the shot it would be very difficult for the model to track each player - how does it know who the player who came into the frame is? How do you attribute stats to them if they're never identified before going out of frame again? etc. Parked this for now.
-
-## 🟣 Project 5: Savvy Hampers Inventory Manager
-
-Mobile-first inventory, costing, and margin tracking for a hamper / kit business (built for an Etsy seller).
+It replaced a substantial amount of spreadsheet-based stock and sales management.
 
 ### Features
 
-- Lot-based inventory with expiry dates and FIFO allocation
-- Barcode scanning (camera or handheld scanner input) for fast stock entry
-- Hamper definitions with category-based requirements and real-time "can make" availability
-- Sales recording with automatic stock consumption and margin calculation (including Etsy fees)
-- Business expenses tracking (packaging, ads, postage, etc.)
-- Analytics dashboards plus low-stock / expiring alerts
-- Optional Etsy integration to sync listing inventory (real mode or mock mode for dev)
-- Historical import from spreadsheets (sales + expenses)
+* Lot-based stock management and expiry tracking
+* Barcode scanning
+* Product and hamper composition
+* Real-time "can make" calculations
+* Automatic inventory consumption
+* Etsy order integration
+* Margin and profitability calculations
+* Etsy fee and offsite-ad reconciliation
+* Monthly invoice ingestion
+* Business expense tracking
+* Low-stock and expiry monitoring
+* Sales and profitability analytics
+* Historical spreadsheet imports
 
-### Tech Stack
+### Architecture & Technology
 
-| Layer | Technology |
-|---|---|
-| Frontend | React + Vite + TypeScript + TailwindCSS |
-| Backend | Express + TypeScript |
-| Database | PostgreSQL |
-| ORM | Prisma |
-| Auth | Supabase (magic links) |
-| Barcode | html5-qrcode |
+Built as a Spring Boot application backed by PostgreSQL and hosted on Render, with Neon used for database infrastructure and GitHub Actions handling automated database backup workflows.
+
+This project is actively used by the business rather than being a demonstration application.
+
+---
+
+# ⚽ Grassroots Football Analytics
+
+This started as a way to better understand my son's grassroots football team.
+
+The original data lived in spreadsheets and was manually structured to make statistical analysis possible. That evolved into PostgreSQL-backed tooling and eventually a React/TypeScript application for recording and analysing matches.
+
+The project explored:
+
+* Match event modelling
+* Player and team analytics
+* Goalkeeper statistics
+* Live event capture
+* Offline-first PWA architecture
+* Data import and reporting
+* Automated testing
+* AI-assisted development workflows
+
+Development accelerated significantly as coding agents improved, eventually moving from individual AI-generated changes to **multi-agent workflows with independent implementation and adversarial code review**.
+
+The project is now largely parked while I focus on Parallel and other systems.
+
+---
+
+# 🎥 Experimental Football Video Analysis
+
+I also explored whether grassroots match footage could automatically produce the event data used by the football analytics application.
+
+I built an initial computer-vision pipeline and proved parts of the concept, but ultimately parked the project.
+
+The interesting engineering conclusion was that detection was not the hardest problem. **Persistent player identity across a moving camera, occlusion and players repeatedly entering and leaving frame** made reliable attribution substantially more difficult.
+
+The amount of labelled training data required also made further investment difficult to justify for the use case.
+
+Sometimes the useful outcome of an experiment is deciding not to build the product.
+
+---
+
+# 🤖 AI-Assisted Engineering
+
+A major area of interest for me is how software engineering changes when AI agents become active participants in the development lifecycle.
+
+My workflows increasingly involve:
+
+* Breaking architecture into independently executable work
+* Parallel agent implementation
+* Repository-level instructions and engineering standards
+* Automated test generation
+* Agent-driven refactoring
+* Static-analysis remediation
+* Cross-model code review
+* Adversarial review between agents
+* Human validation and architectural decision-making
+* CI/CD as the final quality gate rather than trusting generated code
+
+I am particularly interested in the shift from using AI as **autocomplete** toward using agents as an **engineering workforce that still requires architecture, direction, constraints, review and accountability**.
+
+---
+
+# 🧰 Technologies I Work With
+
+**Languages**
+
+Java • TypeScript • Python • SQL
+
+**Web & APIs**
+
+Next.js • React • Spring Boot • Express • REST • SSE
+
+**Data & Messaging**
+
+PostgreSQL • Oracle • Redis • Kafka • Solace • TibcoRV • KDB/Q
+
+**Infrastructure & Operations**
+
+Vercel • Render • Neon • Upstash • Docker Compose • GitHub Actions • Prometheus • Grafana
+
+**Testing**
+
+JUnit • Selenium • Vitest • Playwright • React Testing Library • Supertest
+
+**AI Engineering**
+
+OpenAI Codex • Claude Code • GitHub Copilot • Cognition Devin
+
+---
+
+## Current Focus
+
+Building **Parallel**, exploring modern distributed application architecture, and pushing further into **agentic software engineering and AI-enabled engineering leadership**.
