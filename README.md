@@ -70,6 +70,20 @@ Source is currently private while the product remains pre-launch.
 
 ---
 
+# 🔨 Parallel Forge
+
+**A local-first control plane for durable, reviewable agent-assisted software delivery.**
+
+Parallel Forge began as the engineering system I wanted for building Parallel, but is designed to work independently with other repositories. It combines autonomous agent workflows with explicit human approval gates, isolated worktrees and databases, constrained command execution, durable state, audit evidence and recovery after interruption.
+
+The current v0.1 foundation includes PostgreSQL-backed workflow state, causal events, content-addressed artifacts, protected secrets and environment staging, controlled Git operations, isolated worktree/database provisioning, and Docker-first execution.
+
+The roadmap adds structured planning, implementation and independent review agents; a live control dashboard; bounded CI remediation; and human-approved PR publication and merging.
+
+**Status:** Active v0.1 development — [view the public repository](https://github.com/Clar17y/parallel-forge).
+
+---
+
 # 🟣 Savvy Hampers Inventory & Profitability Platform
 
 A production inventory and profitability application built for a real Etsy-based business and used day-to-day.
