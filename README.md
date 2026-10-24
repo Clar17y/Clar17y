@@ -1,205 +1,60 @@
-# 👋 Hi, I'm @Clar17y
+# Hi, I'm @Clar17y
 
-Technology and engineering leader working in electronic trading, with a particular interest in **AI-assisted software engineering, distributed systems, developer productivity, and building useful products from scratch**.
+I am a technology and engineering leader in electronic trading, working with teams building high-throughput trading systems. My interests span distributed systems, developer productivity and the role of AI agents in software engineering.
 
-Professionally, I lead engineering teams working across high-throughput trading systems and have increasingly focused on how **agentic AI changes the software development lifecycle**.
+Outside work, I build products and the tools used to deliver them. My current focus is AI engineering leadership in practice: combining architectural judgement, clear ownership, independent review and automated validation with increasingly capable coding agents.
 
-Outside work, I build products to explore that in practice. I use tools including **OpenAI Codex, Claude Code, GitHub Copilot and Devin**, often combining multiple agents for implementation, review, testing and architectural challenge.
-
-My projects have evolved from small Python experiments into full-stack applications, distributed services and production systems.
-
----
-
-# 🚆 Parallel
-
-**Community-driven commuter intelligence. Think Waze for commuting.**
-
-Parallel is a pre-launch platform designed to help commuters make better decisions using a combination of real-time transport data and insight from people currently travelling.
-
-Users will be able to:
-
-* Connect with friends and coordinate journeys
-* See disruption information as it develops
-* Share live observations from trains and stations
-* Compare journey options using real-world network conditions
-* Combine community reports with official transport data
-
-### Architecture
-
-```text
-National Rail Darwin Kafka
-        ↓
-Ingestion Worker
-        ↓
-PostgreSQL + Redis
-        ↓
-Express REST API / SSE
-        ↓
-Next.js PWA
-```
-
-A separately deployed scheduler manages historical performance synchronisation, disruption polling and lifecycle cleanup using PostgreSQL/Redis leases for single-instance job execution.
-
-### Technology
-
-| Layer                | Technology                                                     |
-| -------------------- | -------------------------------------------------------------- |
-| Runtime              | Node.js 24, TypeScript, npm workspaces                         |
-| Frontend             | Next.js, React, Tailwind CSS                                   |
-| Client Data          | TanStack React Query                                           |
-| PWA                  | Serwist service worker                                         |
-| Maps                 | MapLibre GL, PMTiles                                           |
-| API                  | Express REST services                                          |
-| Realtime             | Server-Sent Events, Redis Pub/Sub                              |
-| Data Ingestion       | KafkaJS, National Rail Darwin                                  |
-| Database             | PostgreSQL / PostGIS on Neon                                   |
-| Data Access          | Drizzle ORM                                                    |
-| Cache & Coordination | Redis on Upstash                                               |
-| Authentication       | Better Auth                                                    |
-| Validation           | Zod                                                            |
-| Monitoring           | Prometheus, Grafana                                            |
-| Hosting              | Vercel, Render                                                 |
-| Testing              | Vitest, React Testing Library, Supertest, Playwright, axe-core |
-| CI / Quality         | GitHub Actions, Oxlint, dependency auditing                    |
-
-The system is tested beyond normal functional coverage, including **load, soak, reconnect-storm, resilience, recovery and database migration drills**.
-
-External integrations include National Rail Rail Data Marketplace, Darwin live data, HSP historical performance, Transport for London and Resend.
-
-Source is currently private while the product remains pre-launch.
-
----
-
-# 🔨 Parallel Forge
+## [Parallel Forge](https://github.com/Clar17y/parallel-forge)
 
 **A local-first control plane for durable, reviewable agent-assisted software delivery.**
 
-Parallel Forge began as the engineering system I wanted for building Parallel, but is designed to work independently with other repositories. It combines autonomous agent workflows with explicit human approval gates, isolated worktrees and databases, constrained command execution, durable state, audit evidence and recovery after interruption.
+Forge began as the engineering system for Parallel and is designed to work independently with other repositories. Its implemented capabilities include:
 
-The current v0.1 foundation includes PostgreSQL-backed workflow state, causal events, content-addressed artifacts, protected secrets and environment staging, controlled Git operations, isolated worktree/database provisioning, and Docker-first execution.
+- Durable PostgreSQL workflow state, audit events and stored evidence, surfaced through a Next.js operator dashboard.
+- Managed Git worktrees, isolated database resources and subscription-backed CLI orchestration across Codex, Claude Code, Antigravity and Muse Code.
+- v0.3 epic delivery: saved brainstorming, versioned requirements and dependency-aware work items, with verified prerequisite integration and explicitly enabled sequential delivery through human approval gates.
+- Task usage monitoring with configurable warnings, checkpoints, optional hard limits and historical reports.
 
-The roadmap adds structured planning, implementation and independent review agents; a live control dashboard; bounded CI remediation; and human-approved PR publication and merging.
+The newer [direct autonomous runs](https://github.com/Clar17y/parallel-forge/pull/142) use provider CLIs' native tools inside managed worktrees. Forge supervises sessions, runs project checks, coordinates cross-provider review and bounded repairs, then opens pull requests and handles review feedback. Merging remains an explicit owner action.
 
-**Status:** Active v0.1 development — [view the public repository](https://github.com/Clar17y/parallel-forge).
+**Status:** Active development. [v0.3 functionality is merged into `main`](https://github.com/Clar17y/parallel-forge/blob/main/docs/v0.3-release.md), but v0.3 has not been tagged or published. Direct autonomous runs were merged subsequently.
 
----
+## [codex-agent-framework](https://github.com/Clar17y/codex-agent-framework)
 
-# 🟣 Savvy Hampers Inventory & Profitability Platform
+**Activity-based routing for bounded coding work across multiple providers.**
 
-A production inventory and profitability application built for a real Etsy-based business and used day-to-day.
+The framework routes planning, implementation, testing, verification and review across OpenAI Codex CLI, Claude Code, Google Antigravity and Muse Code. It supports Codex and Claude Code as the primary host, preserving the user's selected primary model.
 
-It replaced a substantial amount of spreadsheet-based stock and sales management.
+Editable routing profiles, shared provider quota state and controlled fallback coordinate work on one machine. Task contracts define file ownership, acceptance criteria and checks; restricted read/search roles support analysis, while independent review uses a saved candidate and Jev evidence. Writer claims prevent overlapping assignments while a previous run's completion remains uncertain.
 
-### Features
+## Parallel
 
-* Lot-based stock management and expiry tracking
-* Barcode scanning
-* Product and hamper composition
-* Real-time "can make" calculations
-* Automatic inventory consumption
-* Etsy order integration
-* Margin and profitability calculations
-* Etsy fee and offsite-ad reconciliation
-* Monthly invoice ingestion
-* Business expense tracking
-* Low-stock and expiry monitoring
-* Sales and profitability analytics
-* Historical spreadsheet imports
+**Community-driven commuter intelligence. Private and prelaunch.**
 
-### Architecture & Technology
+Parallel combines live transport data with insights from people travelling. It is designed to help commuters understand disruption, compare journey options and coordinate with friends.
 
-Built as a Spring Boot application backed by PostgreSQL and hosted on Render, with Neon used for database infrastructure and GitHub Actions handling automated database backup workflows.
+The architecture connects National Rail Darwin ingestion over Kafka to PostgreSQL/PostGIS and Redis, an Express API with Server-Sent Events, and a Next.js PWA. A separate scheduler handles historical performance synchronisation, disruption polling and lifecycle cleanup.
 
-This project is actively used by the business rather than being a demonstration application.
+## [Savvy Hampers Inventory Manager](https://github.com/Clar17y/InventoryManagement)
 
----
+**Production inventory and profitability software for an Etsy business.**
 
-# ⚽ Grassroots Football Analytics
+Used day to day, the application replaces spreadsheet-based stock and sales management. It supports lot and expiry tracking, barcode scanning, hamper availability calculations, automatic stock consumption, Etsy integration, and margin and expense reporting.
 
-This started as a way to better understand my son's grassroots football team.
+Built with React, TypeScript, Express and PostgreSQL, using Prisma for data access.
 
-The original data lived in spreadsheets and was manually structured to make statistical analysis possible. That evolved into PostgreSQL-backed tooling and eventually a React/TypeScript application for recording and analysing matches.
+## Football projects
 
-The project explored:
+**[Grassroots football analytics](https://github.com/Clar17y/Football-Events)** grew from spreadsheets used to understand my son's team into tooling for match recording and analysis, including an offline-capable React/TypeScript PWA. The project is largely parked while I focus on Parallel and AI engineering tools.
 
-* Match event modelling
-* Player and team analytics
-* Goalkeeper statistics
-* Live event capture
-* Offline-first PWA architecture
-* Data import and reporting
-* Automated testing
-* AI-assisted development workflows
+**[Experimental football video analysis](https://github.com/Clar17y/Football-Video-Analyser)** explored extracting match data from footage using Python, YOLOv8 and ByteTrack. Detection and tracking were implemented; reliable player identity through camera movement, occlusion and re-entry remained the harder problem. Further development is parked.
 
-Development accelerated significantly as coding agents improved, eventually moving from individual AI-generated changes to **multi-agent workflows with independent implementation and adversarial code review**.
+## Technologies
 
-The project is now largely parked while I focus on Parallel and other systems.
+| Area | Core technologies |
+| --- | --- |
+| Languages | Java, TypeScript, Python, SQL |
+| Applications | React, Next.js, Express, FastAPI, Spring Boot |
+| Data and messaging | PostgreSQL, Redis, Kafka |
+| Delivery and operations | Docker, GitHub Actions, Prometheus, Grafana |
 
----
-
-# 🎥 Experimental Football Video Analysis
-
-I also explored whether grassroots match footage could automatically produce the event data used by the football analytics application.
-
-I built an initial computer-vision pipeline and proved parts of the concept, but ultimately parked the project.
-
-The interesting engineering conclusion was that detection was not the hardest problem. **Persistent player identity across a moving camera, occlusion and players repeatedly entering and leaving frame** made reliable attribution substantially more difficult.
-
-The amount of labelled training data required also made further investment difficult to justify for the use case.
-
-Sometimes the useful outcome of an experiment is deciding not to build the product.
-
----
-
-# 🤖 AI-Assisted Engineering
-
-A major area of interest for me is how software engineering changes when AI agents become active participants in the development lifecycle.
-
-My workflows increasingly involve:
-
-* Breaking architecture into independently executable work
-* Parallel agent implementation
-* Repository-level instructions and engineering standards
-* Automated test generation
-* Agent-driven refactoring
-* Static-analysis remediation
-* Cross-model code review
-* Adversarial review between agents
-* Human validation and architectural decision-making
-* CI/CD as the final quality gate rather than trusting generated code
-
-I am particularly interested in the shift from using AI as **autocomplete** toward using agents as an **engineering workforce that still requires architecture, direction, constraints, review and accountability**.
-
----
-
-# 🧰 Technologies I Work With
-
-**Languages**
-
-Java • TypeScript • Python • SQL
-
-**Web & APIs**
-
-Next.js • React • Spring Boot • Express • REST • SSE
-
-**Data & Messaging**
-
-PostgreSQL • Oracle • Redis • Kafka • Solace • TibcoRV • KDB/Q
-
-**Infrastructure & Operations**
-
-Vercel • Render • Neon • Upstash • Docker Compose • GitHub Actions • Prometheus • Grafana
-
-**Testing**
-
-JUnit • Selenium • Vitest • Playwright • React Testing Library • Supertest
-
-**AI Engineering**
-
-OpenAI Codex • Claude Code • GitHub Copilot • Cognition Devin
-
----
-
-## Current Focus
-
-Building **Parallel**, exploring modern distributed application architecture, and pushing further into **agentic software engineering and AI-enabled engineering leadership**.
